@@ -1,0 +1,3 @@
+import { AppShell, Card, LinkButton, TopBar } from '@/components/ui';
+import { demoEvent } from '@/lib/demo-data';
+export default function DashboardPage() { return <AppShell><TopBar /><section className="mx-auto max-w-7xl px-5 py-12 md:px-8"><p className="font-mono text-xs font-bold uppercase tracking-[0.08em] text-prata-700">Dashboard</p><h1 className="mt-2 font-display text-6xl leading-none">Seus convites</h1><Card className="mt-8 max-w-xl"><h2 className="text-3xl font-black">{demoEvent.title}</h2><p className="mt-3 text-prata-700">{demoEvent.date} · {demoEvent.time} · {demoEvent.local}</p><p className="mt-3 font-bold">{demoEvent.confirmed} confirmados</p><LinkButton href="/dashboard/demo" className="mt-5">Abrir dashboard</LinkButton></Card></section></AppShell>; }
