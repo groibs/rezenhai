@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 22px; background: var(--rz-creme-50); font-family: var(--font-sans); color: var(--rz-laje-950); }
+  .stack { display: flex; flex-direction: column; gap: 6px; }
+  .meta { font-family: var(--font-mono); font-size: 10px; color: var(--rz-prata-700); text-transform: uppercase; letter-spacing: 0.08em; }
+  .display { font-family: var(--font-display); font-size: 44px; line-height: 0.95; letter-spacing: -0.02em; }
+  .sans { font-family: var(--font-sans); font-size: 36px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em; }
+  .mono { font-family: var(--font-mono); font-size: 20px; line-height: 1.2; font-weight: 500; }
+  .row { display: grid; grid-template-columns: 100px 1fr; gap: 18px; align-items: baseline; padding: 6px 0; border-bottom: 1px dashed var(--rz-prata-200); }
+  .row:last-child { border-bottom: none; }
+</style></head>
+<body>
+  <div class="stack">
+    <div class="row"><div class="meta">Display</div><div class="display">Caprasimo Aá Bb Çç</div></div>
+    <div class="row"><div class="meta">Sans</div><div class="sans">Bricolage 1234</div></div>
+    <div class="row"><div class="meta">Mono</div><div class="mono">JetBrains 0/O 1/l</div></div>
+  </div>
+</body></html>

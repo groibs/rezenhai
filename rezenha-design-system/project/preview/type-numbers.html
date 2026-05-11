@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--rz-creme-50); font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .card { background: var(--rz-papel); border-radius: 16px; padding: 14px 16px; box-shadow: var(--shadow-soft); }
+  .label { font-family: var(--font-mono); font-size: 10px; color: var(--rz-prata-700); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .num { font-variant-numeric: tabular-nums; color: var(--rz-laje-950); }
+  .date { font-family: var(--font-sans); font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .time { font-family: var(--font-sans); font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .pix  { font-family: var(--font-mono); font-size: 18px; font-weight: 500; letter-spacing: 0; }
+  .val  { font-family: var(--font-sans); font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+  .row { display: flex; gap: 14px; align-items: baseline; }
+  .small { font-size: 12px; color: var(--rz-prata-700); font-family: var(--font-mono); }
+</style></head>
+<body>
+  <div class="grid">
+    <div class="card"><div class="label">Data curta</div><div class="num date">Sáb, 27/07</div></div>
+    <div class="card"><div class="label">Horário</div><div class="num time">19h30</div></div>
+    <div class="card"><div class="label">Valor</div><div class="row"><span class="num val">R$ 50</span><span class="small">por pessoa</span></div></div>
+    <div class="card"><div class="label">Pix · chave email</div><div class="num pix">churras@rezenhai.app</div></div>
+  </div>
+</body></html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 22px; background: var(--rz-creme-50); font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; }
+  .card { background: var(--rz-papel); border-radius: 20px; padding: 16px; box-shadow: 0 8px 24px -8px rgba(10,10,10,0.12); }
+  .cover { height: 100px; border-radius: 14px; background: var(--rz-holo); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 26px; color: var(--rz-laje-950); letter-spacing: -0.02em; margin-bottom: 12px; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04); }
+  .title { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; color: var(--rz-laje-950); }
+  .meta { font-size: 12.5px; color: var(--rz-prata-700); font-variant-numeric: tabular-nums; margin-top: 3px; }
+  .pill { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; background: var(--rz-lima-500); color: var(--rz-laje-950); font-size: 11px; font-weight: 700; margin-top: 10px; }
+  .checklist { display: flex; flex-direction: column; gap: 8px; }
+  .item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 10px; background: var(--rz-creme-25); font-size: 13px; }
+  .item.taken { color: var(--rz-prata-500); text-decoration: line-through; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rz-brasa-500); }
+  .item.taken .dot { background: var(--rz-prata-300); }
+  .by { margin-left: auto; font-size: 11px; color: var(--rz-prata-700); font-weight: 600; }
+</style></head>
+<body>
+  <div class="grid">
+    <div class="card">
+      <div class="cover">Churras dos amigos</div>
+      <div class="title">Churras dos amigos</div>
+      <div class="meta">Sáb, 27/07 · 19h · Laje da Bia</div>
+      <div class="pill">✓ 14 confirmados</div>
+    </div>
+    <div class="card">
+      <div class="title" style="margin-bottom:10px">Quem leva o quê</div>
+      <div class="checklist">
+        <div class="item taken"><div class="dot"></div>Carvão<div class="by">Léo</div></div>
+        <div class="item taken"><div class="dot"></div>Gelo<div class="by">Mari</div></div>
+        <div class="item"><div class="dot"></div>Bebida</div>
+        <div class="item"><div class="dot"></div>Som</div>
+      </div>
+    </div>
+  </div>
+</body></html>

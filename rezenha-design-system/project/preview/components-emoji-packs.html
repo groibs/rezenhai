@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--rz-creme-50); font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .pack { background: var(--rz-papel); border: 1px solid var(--rz-prata-200); border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
+  .pack.sel { border-color: var(--rz-laje-950); border-width: 2px; padding: 11px; }
+  .name { font-size: 12px; font-weight: 700; color: var(--rz-laje-950); letter-spacing: -0.005em; }
+  .emojis { font-size: 17px; letter-spacing: 1px; }
+  .meta { font-family: var(--font-mono); font-size: 9.5px; color: var(--rz-prata-700); margin-top: 2px; }
+</style></head>
+<body>
+  <div class="grid">
+    <div class="pack sel"><div class="name">Padrão</div><div class="emojis">✅ 🤔 ❌</div><div class="meta">sim·talvez·não</div></div>
+    <div class="pack"><div class="name">Festa</div><div class="emojis">🥳 🤔 😭</div><div class="meta">vou·talvez·não</div></div>
+    <div class="pack"><div class="name">Churras</div><div class="emojis">🥩 👀 🧊</div><div class="meta">colo·talvez·não</div></div>
+    <div class="pack"><div class="name">Resenha</div><div class="emojis">🔥 👀 🫠</div><div class="meta">bora·talvez·não</div></div>
+    <div class="pack"><div class="name">Noite</div><div class="emojis">🪩 🌙 🥱</div><div class="meta">karaokê·jogos</div></div>
+    <div class="pack"><div class="name">Fofo</div><div class="emojis">🫶 🥺 💔</div><div class="meta">tipo aniversário</div></div>
+    <div class="pack"><div class="name">Seco</div><div class="emojis">✅ ⏳ ❌</div><div class="meta">só os checkmarks</div></div>
+    <div class="pack"><div class="name">Meme</div><div class="emojis">🗿 🤨 🚫</div><div class="meta">irônico</div></div>
+    <div class="pack"><div class="name">Sem emoji</div><div class="emojis">— — —</div><div class="meta">só texto</div></div>
+    <div class="pack"><div class="name">Personalizado</div><div class="emojis">+ + +</div><div class="meta">host escolhe</div></div>
+  </div>
+</body></html>

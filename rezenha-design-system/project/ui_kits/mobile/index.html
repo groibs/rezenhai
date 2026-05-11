@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Rezenhaí — UI Kit Mobile</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--rz-creme-50); color: var(--rz-laje-950); font-family: var(--font-sans); padding: 40px 24px; }
+  .stage { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px 16px; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .lab { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--rz-prata-700); text-align: center; }
+
+  /* Phone shell */
+  .phone { width: 280px; height: 580px; background: var(--rz-laje-950); border-radius: 42px; padding: 8px; box-shadow: 0 24px 50px -16px rgba(10,10,10,0.3); }
+  .screen { width: 100%; height: 100%; background: var(--rz-creme-50); border-radius: 36px; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+  .notch { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 80px; height: 22px; background: var(--rz-laje-950); border-radius: 12px; z-index: 5; }
+  .status { padding: 14px 22px 0; display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .pad { padding: 18px; flex: 1; overflow: hidden; display: flex; flex-direction: column; gap: 14px; }
+
+  /* shared */
+  .h-display { font-family: var(--font-display); letter-spacing: -0.025em; line-height: 0.92; margin: 0; }
+  .btn-block { display: block; width: 100%; padding: 16px; border-radius: 999px; font-size: 15.5px; font-weight: 700; border: none; cursor: pointer; text-align: center; }
+  .btn-brasa { background: var(--rz-brasa-500); color: var(--rz-creme-50); }
+  .btn-laje { background: var(--rz-laje-950); color: var(--rz-creme-50); }
+  .btn-ghost-laje { background: transparent; color: var(--rz-laje-950); border: 1.5px solid var(--rz-laje-950); }
+  .input { width: 100%; padding: 14px 16px; border-radius: 14px; background: var(--rz-papel); border: 1.5px solid var(--rz-prata-200); font: 500 15px/1.2 var(--font-sans); color: var(--rz-laje-950); }
+
+  /* TELA 1 — Página pública INTEGRADA (capa + info + Você vai colar?) */
+  .t1 .pad { padding: 0; gap: 0; overflow-y: auto; }
+  .t1 .pad::-webkit-scrollbar { display: none; }
+  .t1 .cover { aspect-ratio: 4/5; background: var(--rz-holo); display: flex; flex-direction: column; justify-content: flex-end; padding: 18px; flex-shrink: 0; }
+  .t1 .cover h1 { font-family: var(--font-display); font-size: 36px; line-height: 0.92; letter-spacing: -0.025em; margin: 0; }
+  .t1 .cover .meta { font-size: 12.5px; font-weight: 600; margin-top: 6px; }
+  .t1 .info { padding: 14px 18px 0; }
+  .t1 .info .row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px dashed var(--rz-prata-200); font-size: 13px; }
+  .t1 .info .row .l { color: var(--rz-prata-700); }
+  .t1 .info .row .v { font-weight: 700; }
+  .t1 .rsvp-wrap { padding: 16px 18px 18px; }
+  .t1 .q { font-family: var(--font-display); font-size: 24px; line-height: 1; letter-spacing: -0.02em; margin: 0 0 10px; }
+  .t1 .rsvp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .t1 .rsvp .b { padding: 12px 4px; border-radius: 16px; text-align: center; font-size: 11.5px; font-weight: 700; cursor: pointer; }
+  .t1 .rsvp .b1 { background: var(--rz-lima-500); border: 2px solid var(--rz-laje-950); }
+  .t1 .rsvp .b2 { background: var(--rz-papel); border: 1.5px solid var(--rz-prata-200); }
+  .t1 .rsvp .b3 { background: var(--rz-papel); border: 1.5px solid var(--rz-prata-200); color: var(--rz-prata-700); }
+  .t1 .em { font-size: 18px; display: block; margin-bottom: 2px; }
+
+  /* TELA 2 — Nome */
+  .t2 .step { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--rz-prata-700); }
+  .t2 .h { font-family: var(--font-display); font-size: 30px; line-height: 1; letter-spacing: -0.02em; margin: 6px 0 4px; }
+  .t2 .micro { font-size: 13px; color: var(--rz-prata-700); }
+
+  /* TELA 3 — Pix */
+  .t3 .pix-card { background: var(--rz-laje-950); color: var(--rz-creme-50); border-radius: 22px; padding: 18px; }
+  .t3 .pix-card .lbl { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--rz-prata-300); }
+  .t3 .pix-card .val { font-family: var(--font-display); font-size: 36px; letter-spacing: -0.025em; line-height: 1; margin-top: 2px; }
+  .t3 .pix-key { background: var(--rz-laje-800); border-radius: 12px; padding: 11px 14px; font-family: var(--font-mono); font-size: 12px; margin-top: 12px; display: flex; justify-content: space-between; align-items: center; }
+  .t3 .pix-key .copy { color: var(--rz-lima-500); font-weight: 700; }
+  .t3 .disclaim { font-size: 11.5px; color: var(--rz-prata-700); line-height: 1.4; }
+
+  /* TELA 4 — Checklist */
+  .t4 .list { display: flex; flex-direction: column; gap: 8px; }
+  .t4 .item { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; background: var(--rz-papel); border: 1.5px solid var(--rz-prata-200); font-size: 14px; font-weight: 600; }
+  .t4 .item .dot { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--rz-prata-300); flex-shrink: 0; }
+  .t4 .item.sel { background: var(--rz-laje-950); color: var(--rz-creme-50); border-color: var(--rz-laje-950); }
+  .t4 .item.sel .dot { background: var(--rz-lima-500); border-color: var(--rz-lima-500); }
+  .t4 .item.taken { color: var(--rz-prata-500); }
+  .t4 .item.taken .by { margin-left: auto; font-size: 11px; font-weight: 600; }
+
+  /* TELA 5 — Fechou */
+  .t5 .pad { justify-content: center; align-items: center; text-align: center; padding: 28px; }
+  .t5 .check { width: 80px; height: 80px; border-radius: 50%; background: var(--rz-lima-500); display: flex; align-items: center; justify-content: center; font-size: 38px; font-weight: 800; color: var(--rz-laje-950); margin-bottom: 8px; }
+  .t5 .h { font-family: var(--font-display); font-size: 36px; line-height: 0.95; letter-spacing: -0.02em; margin: 0; }
+  .t5 .sub { font-size: 13.5px; color: var(--rz-prata-700); margin: 10px 0 18px; }
+
+  /* TELA 6 — Dashboard host */
+  .t6 .nav { display: flex; justify-content: space-between; align-items: center; padding: 0 4px; }
+  .t6 .badge { background: var(--rz-lima-500); padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+  .t6 .h { font-family: var(--font-display); font-size: 26px; line-height: 1; letter-spacing: -0.02em; margin: 0; }
+  .t6 .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .t6 .stat { background: var(--rz-papel); border-radius: 16px; padding: 14px; }
+  .t6 .stat.lima { background: var(--rz-lima-500); }
+  .t6 .stat .lbl { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--rz-prata-700); }
+  .t6 .stat.lima .lbl { color: var(--rz-laje-950); }
+  .t6 .stat .num { font-family: var(--font-sans); font-size: 32px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .t6 .actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .t6 .actions .a { padding: 8px 12px; border-radius: 999px; background: var(--rz-papel); border: 1px solid var(--rz-prata-200); font-size: 12px; font-weight: 600; }
+
+  /* TELA 7 — Álbum */
+  .t7 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .t7 .p { aspect-ratio: 1; border-radius: 6px; }
+  .t7 .p1 { background: var(--rz-holo); }
+  .t7 .p2 { background: var(--rz-brasa-500); }
+  .t7 .p3 { background: var(--rz-laje-950); }
+  .t7 .p4 { background: var(--rz-lima-500); }
+  .t7 .p5 { background: var(--rz-prata-300); }
+  .t7 .p6 { background: linear-gradient(135deg,#1a0d0a,#2e1410); }
+  .t7 .p7 { background: var(--rz-holo-soft); }
+  .t7 .p8 { background: var(--rz-holo-vibrant); }
+  .t7 .p9 { background: var(--rz-brasa-300); }
+  .t7 .disc { font-size: 11px; color: var(--rz-prata-700); text-align: center; }
+</style>
+</head>
+<body>
+
+  <div class="stage">
+
+    <!-- TELA 1 — Página pública INTEGRADA (capa + info + RSVP inline) -->
+    <div class="col">
+      <div class="phone t1" data-screen-label="01 Página pública (com confirmação inline)">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="status"><span>9:41</span><span>5G</span></div>
+          <div class="pad">
+            <div class="cover">
+              <h1>churras<br>dos amigos</h1>
+              <div class="meta">Sáb, 27/07 · 19h30</div>
+            </div>
+            <div class="info">
+              <div class="row"><span class="l">Onde</span><span class="v">Laje da Bia</span></div>
+              <div class="row"><span class="l">Contribuição</span><span class="v">R$ 50</span></div>
+              <div class="row"><span class="l">Quem chamou</span><span class="v">Léo</span></div>
+              <div class="row" style="border:none;"><span class="l">Já confirmaram</span><span class="v">14</span></div>
+            </div>
+            <div class="rsvp-wrap">
+              <h2 class="q">Você vai colar?</h2>
+              <div class="rsvp">
+                <div class="b b1"><span class="em">🥩</span>Eu colo</div>
+                <div class="b b2"><span class="em">👀</span>Talvez</div>
+                <div class="b b3"><span class="em">🧊</span>Não colo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lab">Página pública · confirmação inline</div>
+    </div>
+
+    <!-- TELA 2 — Nome -->
+    <div class="col">
+      <div class="phone t2" data-screen-label="02 Como colocamos seu nome">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="status"><span>9:41</span><span>5G</span></div>
+          <div class="pad">
+            <div class="step">Passo 1 de 4</div>
+            <h2 class="h">Como colocamos<br>seu nome na lista?</h2>
+            <p class="micro">Pode ser só o primeiro nome — vai aparecer pra quem mais foi chamado.</p>
+            <input class="input" placeholder="Seu nome" value="Mari">
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
+              <button class="btn-block btn-brasa">Continuar</button>
+              <button class="btn-block btn-ghost-laje" style="font-size:13px;padding:10px;">Aparecer como anônimo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lab">Captura de nome</div>
+    </div>
+
+    <!-- TELA 3 — Pix com nova microcopy -->
+    <div class="col">
+      <div class="phone t3" data-screen-label="03 Pix da resenha">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="status"><span>9:41</span><span>5G</span></div>
+          <div class="pad">
+            <div style="font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rz-prata-700);">Passo 2 de 4</div>
+            <h2 class="h-display" style="font-size:24px;">Esse rolê tem<br>contribuição.</h2>
+            <div class="pix-card">
+              <div class="lbl">Pix da resenha</div>
+              <div class="val">R$ 50</div>
+              <div class="pix-key">
+                <span>churras@rezenhai.app</span>
+                <span class="copy">Copiar</span>
+              </div>
+            </div>
+            <p class="disclaim">O Pix vai direto para o organizador do evento. O Rezenhaí só ajuda a organizar.</p>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
+              <button class="btn-block btn-laje">Já paguei</button>
+              <button class="btn-block btn-ghost-laje" style="font-size:13px;padding:10px;">Pago depois</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lab">Pix manual assistido</div>
+    </div>
+
+    <!-- TELA 4 — Checklist -->
+    <div class="col">
+      <div class="phone t4" data-screen-label="04 Quer levar algo?">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="status"><span>9:41</span><span>5G</span></div>
+          <div class="pad">
+            <div style="font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rz-prata-700);">Passo 3 de 4</div>
+            <h2 class="h-display" style="font-size:26px;">Quer levar algo?</h2>
+            <div class="list">
+              <div class="item sel"><span class="dot"></span>Bebida</div>
+              <div class="item"><span class="dot"></span>Som / caixa</div>
+              <div class="item taken"><span class="dot" style="background:var(--rz-prata-300);border-color:var(--rz-prata-300)"></span>Carvão<span class="by">Léo</span></div>
+              <div class="item taken"><span class="dot" style="background:var(--rz-prata-300);border-color:var(--rz-prata-300)"></span>Gelo<span class="by">Bia</span></div>
+              <div class="item"><span class="dot"></span>Sobremesa</div>
+            </div>
+            <button class="btn-block btn-brasa" style="margin-top:auto;">Continuar</button>
+          </div>
+        </div>
+      </div>
+      <div class="lab">Quem leva o quê</div>
+    </div>
+
+    <!-- TELA 5 — Fechou -->
+    <div class="col">
+      <div class="phone t5" data-screen-label="05 Você está na lista">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="status"><span>9:41</span><span>5G</span></div>
+          <div class="pad">
+            <div class="check">✓</div>
+            <h2 class="h">Fechou.<br>Você está<br>na lista.</h2>
+            <p class="sub">Adicionamos no calendário e mandamos um lembrete no dia.</p>
+            <button class="btn-block btn-laje">Adicionar ao calendário</button>
+            <button class="btn-block btn-ghost-laje" style="margin-top:8px;">Voltar ao convite</button>
+          </div>
+        </div>
+      </div>
+      <div class="lab">Confirmação final</div>
+    </div>
+
+    <!-- TELA 6 — Dashboard mobile host -->
+    <div class="col">
+      <div class="phone t6" data-screen-label="06 Dashboard mobile (host)">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="status"><span>9:41</span><span>5G</span></div>
+          <div class="pad">
+            <div class="nav"><span style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--rz-prata-700);">Sáb, 27/07 · 19h</span><span class="badge">Publicado</span></div>
+            <h2 class="h">Churras<br>dos amigos</h2>
+            <div class="stats">
+              <div class="stat lima"><div class="lbl">Confirmados</div><div class="num">14</div></div>
+              <div class="stat"><div class="lbl">Talvez</div><div class="num">3</div></div>
+              <div class="stat"><div class="lbl">Pix pago</div><div class="num">8</div></div>
+              <div class="stat"><div class="lbl">Itens</div><div class="num">5/8</div></div>
+            </div>
+            <div class="actions">
+              <div class="a">🔗 Copiar link</div>
+              <div class="a">📲 Zap</div>
+              <div class="a">📋 Checklist</div>
+              <div class="a">📷 Fotos</div>
+            </div>
+            <button class="btn-block btn-brasa" style="margin-top:auto;">Ver convidados</button>
+          </div>
+        </div>
+      </div>
+      <div class="lab">Dashboard mobile</div>
+    </div>
+
+    <!-- TELA 7 — Álbum -->
+    <div class="col">
+      <div class="phone t7" data-screen-label="07 Fotos da resenha">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="status"><span>9:41</span><span>5G</span></div>
+          <div class="pad">
+            <h2 class="h-display" style="font-size:26px;">Fotos<br>da resenha</h2>
+            <div class="grid">
+              <div class="p p1"></div><div class="p p2"></div><div class="p p3"></div>
+              <div class="p p4"></div><div class="p p5"></div><div class="p p6"></div>
+              <div class="p p7"></div><div class="p p8"></div><div class="p p9"></div>
+            </div>
+            <div class="disc">As fotos ficam visíveis para participantes do evento.</div>
+            <div style="display:flex;gap:6px;margin-top:auto;">
+              <button class="btn-block btn-laje" style="font-size:13px;padding:12px;">📸 Tirar foto</button>
+              <button class="btn-block btn-ghost-laje" style="font-size:13px;padding:12px;">Galeria</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lab">Álbum (cheio)</div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 30px; background: var(--rz-creme-50); font-family: var(--font-sans); }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .card { background: var(--rz-papel); border-radius: 16px; height: 86px; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px 12px; }
+  .name { font-size: 11px; font-weight: 700; color: var(--rz-laje-950); }
+  .meta { font-family: var(--font-mono); font-size: 9.5px; color: var(--rz-prata-700); }
+  .soft { box-shadow: 0 4px 16px -4px rgba(10,10,10,0.08), 0 2px 4px -2px rgba(10,10,10,0.06); }
+  .card-sh { box-shadow: 0 8px 24px -8px rgba(10,10,10,0.12), 0 2px 6px -2px rgba(10,10,10,0.06); }
+  .pop  { box-shadow: 0 16px 40px -12px rgba(10,10,10,0.22), 0 4px 12px -4px rgba(10,10,10,0.10); }
+  .cover{ box-shadow: 0 24px 60px -16px rgba(10,10,10,0.35); }
+</style></head>
+<body>
+  <div class="row">
+    <div class="card soft"><div class="name">soft</div><div class="meta">--shadow-soft</div></div>
+    <div class="card card-sh"><div class="name">card</div><div class="meta">--shadow-card</div></div>
+    <div class="card pop"><div class="name">pop · hover</div><div class="meta">--shadow-pop</div></div>
+    <div class="card cover"><div class="name">cover · capa</div><div class="meta">--shadow-cover</div></div>
+  </div>
+</body></html>

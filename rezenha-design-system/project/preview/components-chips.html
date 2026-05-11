@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--rz-creme-50); font-family: var(--font-sans); }
+  .group { margin-bottom: 14px; }
+  .label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--rz-prata-700); margin-bottom: 8px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 500; background: var(--rz-papel); color: var(--rz-laje-950); border: 1px solid var(--rz-prata-200); cursor: pointer; transition: all 120ms; }
+  .chip:hover { border-color: var(--rz-laje-950); }
+  .chip.selected { background: var(--rz-laje-950); color: var(--rz-creme-50); border-color: var(--rz-laje-950); font-weight: 600; }
+  .chip.add { border-style: dashed; color: var(--rz-prata-700); }
+  .chip.add:hover { color: var(--rz-laje-950); border-color: var(--rz-laje-950); border-style: solid; }
+</style></head>
+<body>
+  <div class="group">
+    <div class="label">Categoria</div>
+    <div class="row">
+      <div class="chip selected">🥩 Churrasco</div>
+      <div class="chip">🎂 Aniversário</div>
+      <div class="chip">🔥 Resenha</div>
+      <div class="chip">🏠 Casa aberta</div>
+      <div class="chip">🎮 Jogos</div>
+      <div class="chip">🪩 Karaokê</div>
+      <div class="chip">🍝 Jantar</div>
+      <div class="chip">🏖️ Praia</div>
+      <div class="chip">🌇 Laje</div>
+    </div>
+  </div>
+  <div class="group">
+    <div class="label">Adicionar ao convite</div>
+    <div class="row">
+      <div class="chip add">+ Pix</div>
+      <div class="chip add">+ Playlist</div>
+      <div class="chip add">+ Quem leva o quê</div>
+      <div class="chip add">+ Dress code</div>
+      <div class="chip add">+ Estacionamento</div>
+      <div class="chip add">+ Fotos da resenha</div>
+    </div>
+  </div>
+</body></html>

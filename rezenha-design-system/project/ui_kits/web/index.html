@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Rezenhaí — UI Kit Web</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--rz-creme-50); color: var(--rz-laje-950); font-family: var(--font-sans); }
+  .kit-section { padding: 60px 48px; border-bottom: 1px dashed var(--rz-prata-300); }
+  .kit-section:last-child { border-bottom: none; }
+  .kit-label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--rz-prata-700); margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
+  .kit-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--rz-brasa-500); }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* ---------- NAV ---------- */
+  .nav { display: flex; align-items: center; gap: 28px; padding: 18px 32px; background: var(--rz-papel); border-radius: 999px; border: 1px solid var(--rz-prata-200); }
+  .nav-logo { font-family: var(--font-display); font-size: 26px; letter-spacing: -0.02em; line-height: 1; }
+  .nav-links { display: flex; gap: 24px; font-size: 14.5px; font-weight: 500; margin-left: auto; }
+  .nav-links a { color: var(--rz-laje-950); text-decoration: none; }
+  .nav-btn-secondary { padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 14px; background: transparent; border: 1.5px solid var(--rz-laje-950); cursor: pointer; }
+  .nav-btn-primary { padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 14px; background: var(--rz-laje-950); color: var(--rz-creme-50); border: none; cursor: pointer; }
+
+  /* ---------- HERO ---------- */
+  .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 60px; align-items: center; padding-top: 60px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: var(--rz-lima-500); color: var(--rz-laje-950); font-size: 12.5px; font-weight: 700; }
+  .hero h1 { font-family: var(--font-display); font-size: 96px; line-height: 0.92; letter-spacing: -0.03em; margin: 18px 0 18px; }
+  .hero h1 .accent { color: var(--rz-brasa-500); }
+  .hero .sub { font-size: 19px; line-height: 1.5; color: var(--rz-prata-700); max-width: 460px; margin: 0 0 32px; }
+  .hero-ctas { display: flex; gap: 12px; align-items: center; }
+  .btn-primary { padding: 16px 28px; border-radius: 999px; background: var(--rz-brasa-500); color: var(--rz-creme-50); font-weight: 700; font-size: 16px; border: none; cursor: pointer; box-shadow: 0 8px 20px -8px rgba(244,87,26,0.5); transition: transform 120ms; }
+  .btn-primary:hover { transform: translateY(-1px); background: var(--rz-brasa-600); }
+  .btn-ghost { padding: 16px 24px; border-radius: 999px; background: transparent; color: var(--rz-laje-950); font-weight: 600; font-size: 15px; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+  .hero-microcopy { font-size: 13px; color: var(--rz-prata-700); margin-top: 14px; }
+
+  /* Hero right — phone mockup */
+  .phone-stack { position: relative; height: 560px; display: flex; align-items: center; justify-content: center; }
+  .phone-stack::before { content:''; position: absolute; inset: 0; background: var(--rz-holo); border-radius: 50%; filter: blur(60px); opacity: 0.7; z-index: 0; }
+  .phone { position: relative; z-index: 1; width: 290px; height: 540px; background: var(--rz-laje-950); border-radius: 44px; padding: 10px; box-shadow: 0 40px 80px -20px rgba(10,10,10,0.4); }
+  .phone-screen { width: 100%; height: 100%; background: var(--rz-creme-50); border-radius: 36px; overflow: hidden; display: flex; flex-direction: column; }
+  .phone-cover { aspect-ratio: 1; background: var(--rz-holo); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; position: relative; }
+  .phone-cover h2 { font-family: var(--font-display); font-size: 44px; line-height: 0.92; letter-spacing: -0.025em; margin: 0; color: var(--rz-laje-950); }
+  .phone-cover .meta { font-size: 13px; font-weight: 600; margin-top: 8px; color: var(--rz-laje-950); }
+  .phone-body { padding: 18px; flex: 1; }
+  .phone-body .title { font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+  .phone-rsvp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .phone-rsvp .b { padding: 12px 4px; border-radius: 14px; text-align: center; font-size: 11.5px; font-weight: 600; }
+  .phone-rsvp .b1 { background: var(--rz-lima-500); border: 2px solid var(--rz-laje-950); }
+  .phone-rsvp .b2 { background: var(--rz-papel); border: 1.5px solid var(--rz-prata-200); }
+  .phone-rsvp .b3 { background: var(--rz-papel); border: 1.5px solid var(--rz-prata-200); color: var(--rz-prata-700); }
+  .phone-emoji { font-size: 18px; display: block; margin-bottom: 4px; }
+
+  /* ---------- CATEGORIAS ---------- */
+  .cats { display: flex; flex-wrap: wrap; gap: 10px; }
+  .cat-chip { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; background: var(--rz-papel); border: 1.5px solid var(--rz-prata-200); font-size: 15px; font-weight: 500; cursor: pointer; transition: all 120ms; }
+  .cat-chip:hover { border-color: var(--rz-laje-950); transform: translateY(-1px); }
+  .cat-chip.sel { background: var(--rz-laje-950); color: var(--rz-creme-50); border-color: var(--rz-laje-950); }
+
+  /* ---------- TEMPLATES GRID ---------- */
+  .tpl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .tpl { aspect-ratio: 4/5; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 40px -16px rgba(10,10,10,0.25); position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1); padding: 24px; text-align: center; }
+  .tpl:hover { transform: translateY(-4px) scale(1.01); }
+  .tpl-name { position: absolute; bottom: -28px; left: 0; right: 0; text-align: center; font-size: 14px; font-weight: 600; color: var(--rz-laje-950); }
+  .tpl h3 { font-family: var(--font-display); font-size: 38px; line-height: 0.92; letter-spacing: -0.025em; margin: 0; }
+  .tpl .date { font-size: 12px; font-weight: 600; margin-top: 12px; }
+  .tpl-row { display: flex; justify-content: center; }
+  /* Specific templates */
+  .tpl-1 { background: var(--rz-holo); color: var(--rz-laje-950); }
+  .tpl-2 { background: var(--rz-laje-950); color: var(--rz-lima-500); }
+  .tpl-3 { background: var(--rz-brasa-500); color: var(--rz-laje-950); }
+  .tpl-4 { background: var(--rz-creme-50); color: var(--rz-laje-950); border: 1px solid var(--rz-prata-200); }
+  .tpl-4 h3 { font-family: var(--font-sans); font-weight: 800; text-transform: uppercase; font-size: 30px; }
+  .tpl-5 { background: linear-gradient(135deg, #1a0d0a 0%, #2e1410 100%); color: var(--rz-brasa-500); position: relative; }
+  .tpl-5::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 70%, rgba(244,87,26,0.4) 0%, transparent 60%); }
+  .tpl-5 > * { position: relative; z-index: 1; }
+  .tpl-6 { background: var(--rz-lima-500); color: var(--rz-laje-950); }
+  .tpl-7 { background: linear-gradient(180deg, #ffb6e1 0%, #c7b8ff 100%); color: var(--rz-laje-950); }
+  .tpl-8 { background: var(--rz-laje-950); color: var(--rz-creme-50); }
+  .tpl-8 h3 { font-family: var(--font-sans); font-weight: 800; }
+
+  .tpl-section-grid { gap: 18px 18px 50px; }
+  .tpl-with-label { display: flex; flex-direction: column; gap: 12px; }
+  .tpl-with-label .lab { text-align: center; font-size: 14px; font-weight: 600; }
+
+  /* ---------- EDITOR PREVIEW ---------- */
+  .editor { display: grid; grid-template-columns: 380px 1fr; gap: 24px; }
+  .editor-panel { background: var(--rz-papel); border-radius: 28px; padding: 28px; box-shadow: 0 8px 24px -8px rgba(10,10,10,0.12); }
+  .editor-tab-row { display: flex; gap: 4px; padding: 4px; background: var(--rz-creme-25); border-radius: 999px; margin-bottom: 22px; }
+  .editor-tab { flex: 1; text-align: center; padding: 10px; border-radius: 999px; font-size: 13.5px; font-weight: 600; cursor: pointer; color: var(--rz-prata-700); }
+  .editor-tab.sel { background: var(--rz-laje-950); color: var(--rz-creme-50); }
+  .editor-field { margin-bottom: 16px; }
+  .editor-field label { display: block; font-size: 12.5px; font-weight: 600; margin-bottom: 6px; }
+  .editor-field input, .editor-field textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--rz-prata-200); background: var(--rz-creme-25); font-family: var(--font-sans); font-size: 14.5px; }
+  .editor-section-title { font-size: 13.5px; font-weight: 700; margin: 18px 0 10px; display: flex; align-items: center; justify-content: space-between; }
+  .editor-add-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .editor-add-chips .c { padding: 7px 12px; border-radius: 999px; border: 1.5px dashed var(--rz-prata-300); font-size: 12.5px; color: var(--rz-prata-700); cursor: pointer; }
+  .editor-add-chips .c:hover { color: var(--rz-laje-950); border-color: var(--rz-laje-950); }
+  .editor-actions { display: flex; gap: 8px; margin-top: 22px; }
+  .editor-actions .btn-primary { flex: 1; padding: 14px; font-size: 15px; }
+  .btn-secondary { padding: 14px 18px; border-radius: 999px; background: transparent; color: var(--rz-laje-950); font-weight: 600; font-size: 14px; border: 1.5px solid var(--rz-laje-950); cursor: pointer; }
+
+  .editor-preview { background: var(--rz-papel); border-radius: 28px; padding: 28px; box-shadow: 0 8px 24px -8px rgba(10,10,10,0.12); display: flex; align-items: center; justify-content: center; min-height: 560px; }
+  .preview-phone { width: 320px; }
+  .preview-phone .cover { aspect-ratio: 1; border-radius: 24px; background: var(--rz-holo); display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; box-shadow: 0 16px 40px -12px rgba(10,10,10,0.25); }
+  .preview-phone .cover h2 { font-family: var(--font-display); font-size: 46px; line-height: 0.92; letter-spacing: -0.025em; margin: 0; }
+  .preview-phone .cover .meta { font-size: 13.5px; font-weight: 600; margin-top: 8px; }
+  .preview-phone .info { margin-top: 16px; }
+  .preview-phone .info .lbl { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--rz-prata-700); margin-top: 12px; }
+  .preview-phone .info .val { font-size: 15px; font-weight: 600; margin-top: 2px; }
+  .preview-phone .rsvp { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .preview-phone .rsvp .b { padding: 12px 4px; border-radius: 14px; text-align: center; font-size: 12px; font-weight: 600; }
+  .preview-phone .rsvp .b1 { background: var(--rz-lima-500); border: 2px solid var(--rz-laje-950); }
+  .preview-phone .rsvp .b2 { background: var(--rz-papel); border: 1.5px solid var(--rz-prata-200); }
+  .preview-phone .rsvp .b3 { background: var(--rz-papel); border: 1.5px solid var(--rz-prata-200); color: var(--rz-prata-700); }
+
+  /* ---------- PUBLIC EVENT PAGE (DESKTOP) ---------- */
+  .pub { background: var(--rz-laje-950); border-radius: 28px; padding: 48px; color: var(--rz-creme-50); position: relative; overflow: hidden; }
+  .pub::before { content: ''; position: absolute; right: -100px; top: -100px; width: 500px; height: 500px; background: var(--rz-holo); border-radius: 50%; filter: blur(80px); opacity: 0.4; }
+  .pub-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; position: relative; z-index: 1; }
+  .pub-cover { aspect-ratio: 1; border-radius: 24px; background: var(--rz-holo); display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; box-shadow: 0 24px 60px -16px rgba(0,0,0,0.5); }
+  .pub-cover h1 { font-family: var(--font-display); font-size: 64px; line-height: 0.92; letter-spacing: -0.025em; margin: 0; color: var(--rz-laje-950); }
+  .pub-cover .meta { font-size: 15px; font-weight: 600; margin-top: 14px; color: var(--rz-laje-950); }
+  .pub-info h2 { font-family: var(--font-sans); font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; }
+  .pub-info .by { font-size: 14px; color: var(--rz-prata-300); margin-bottom: 24px; }
+  .pub-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .pub-cell .lbl { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--rz-prata-300); margin-bottom: 4px; }
+  .pub-cell .val { font-size: 17px; font-weight: 600; }
+  .pub-question { font-family: var(--font-display); font-size: 36px; line-height: 1; letter-spacing: -0.02em; margin: 28px 0 14px; }
+  .pub-rsvp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
+  .pub-rsvp .b { padding: 18px 12px; border-radius: 18px; text-align: center; font-weight: 600; cursor: pointer; }
+  .pub-rsvp .emoji { font-size: 22px; display: block; margin-bottom: 4px; }
+  .pub-rsvp .b1 { background: var(--rz-lima-500); color: var(--rz-laje-950); }
+  .pub-rsvp .b2 { background: var(--rz-laje-800); color: var(--rz-creme-50); border: 1px solid var(--rz-laje-700); }
+  .pub-rsvp .b3 { background: var(--rz-laje-800); color: var(--rz-prata-300); border: 1px solid var(--rz-laje-700); }
+  .pub-list { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--rz-prata-300); }
+  .pub-list .avatars { display: flex; }
+  .pub-list .avatars .a { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--rz-laje-950); margin-left: -8px; }
+  .pub-list .avatars .a:first-child { margin-left: 0; }
+
+  /* ---------- DASHBOARD ---------- */
+  .dash { display: grid; grid-template-columns: 220px 1fr; gap: 24px; }
+  .dash-side { background: var(--rz-papel); border-radius: 24px; padding: 20px; }
+  .dash-side .item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; font-size: 14px; font-weight: 500; color: var(--rz-prata-700); cursor: pointer; }
+  .dash-side .item.sel { background: var(--rz-laje-950); color: var(--rz-creme-50); font-weight: 600; }
+  .dash-side .item .ico { width: 18px; height: 18px; border-radius: 50%; background: currentColor; opacity: 0.6; }
+  .dash-side .item.sel .ico { background: var(--rz-lima-500); opacity: 1; }
+  .dash-main { display: flex; flex-direction: column; gap: 18px; }
+  .dash-header { display: flex; align-items: center; justify-content: space-between; padding: 0 8px; }
+  .dash-header h2 { font-family: var(--font-sans); font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+  .dash-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .stat { background: var(--rz-papel); border-radius: 20px; padding: 22px; }
+  .stat .lbl { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--rz-prata-700); }
+  .stat .num { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; margin-top: 6px; font-variant-numeric: tabular-nums; line-height: 1; }
+  .stat .sub { font-size: 12.5px; color: var(--rz-prata-700); margin-top: 6px; }
+  .stat.lima { background: var(--rz-lima-500); }
+  .stat.brasa { background: var(--rz-brasa-500); color: var(--rz-creme-50); }
+  .stat.brasa .lbl, .stat.brasa .sub { color: var(--rz-creme-50); opacity: 0.8; }
+  .dash-tables { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; }
+  .dash-card { background: var(--rz-papel); border-radius: 20px; padding: 22px; }
+  .dash-card h3 { font-size: 16px; font-weight: 700; margin: 0 0 14px; display: flex; align-items: center; justify-content: space-between; }
+  .dash-card h3 a { font-size: 12.5px; font-weight: 600; color: var(--rz-brasa-500); text-decoration: none; }
+  .guest { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--rz-prata-200); }
+  .guest:last-child { border-bottom: none; }
+  .guest .av { width: 32px; height: 32px; border-radius: 50%; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; color: var(--rz-laje-950); }
+  .guest .name { font-size: 14px; font-weight: 600; flex: 1; }
+  .guest .stat-pill { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+  .sp-conf { background: var(--rz-lima-500); color: var(--rz-laje-950); }
+  .sp-maybe { background: var(--rz-prata-300); color: var(--rz-laje-950); }
+  .sp-no { background: var(--rz-laje-950); color: var(--rz-creme-50); }
+  .sp-paid { background: var(--rz-lima-500); color: var(--rz-laje-950); }
+  .sp-pix-pending { background: var(--rz-brasa-300); color: var(--rz-laje-950); }
+  .qa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .qa { padding: 14px 16px; border-radius: 14px; background: var(--rz-creme-25); font-size: 13.5px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+  .qa:hover { background: var(--rz-creme-50); }
+
+  /* ---------- ALBUM ---------- */
+  .album-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .photo { aspect-ratio: 1; border-radius: 14px; background-size: cover; background-position: center; }
+  .p1 { background: var(--rz-brasa-300); }
+  .p2 { background: var(--rz-lima-300); }
+  .p3 { background: var(--rz-prata-300); }
+  .p4 { background: var(--rz-holo); }
+  .p5 { background: var(--rz-brasa-500); }
+  .p6 { background: var(--rz-laje-950); }
+
+  /* ---------- FOOTER ---------- */
+  .ftr { padding: 60px 48px 40px; background: var(--rz-laje-950); color: var(--rz-creme-50); }
+  .ftr-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; max-width: 1200px; margin: 0 auto; }
+  .ftr h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--rz-prata-500); font-family: var(--font-mono); font-weight: 600; margin: 0 0 14px; }
+  .ftr a { display: block; color: var(--rz-creme-50); text-decoration: none; font-size: 14px; padding: 4px 0; opacity: 0.9; }
+  .ftr-logo { font-family: var(--font-display); font-size: 48px; letter-spacing: -0.03em; line-height: 1; margin-bottom: 10px; }
+  .ftr-tag { font-size: 14px; color: var(--rz-prata-300); max-width: 280px; }
+</style>
+</head>
+<body>
+
+  <!-- ============================================================
+       SECTION 1 — NAV + HERO (LANDING)
+       ============================================================ -->
+  <section class="kit-section" data-screen-label="01 Landing — Hero">
+    <div class="container">
+      <div class="kit-label">01 — Landing / Hero</div>
+
+      <nav class="nav">
+        <div class="nav-logo">Rezenhaí</div>
+        <div class="nav-links">
+          <a href="#">Como funciona</a>
+          <a href="#">Exemplos</a>
+          <a href="#">Recursos</a>
+          <a href="#">Churrascos</a>
+          <a href="#">Aniversários</a>
+        </div>
+        <button class="nav-btn-secondary">Entrar</button>
+        <button class="nav-btn-primary">Criar convite</button>
+      </nav>
+
+      <div class="hero">
+        <div>
+          <div class="hero-eyebrow">🔥 Sem app obrigatório pra galera</div>
+          <h1>Chama,<br>envia,<br><span class="accent">acontece.</span></h1>
+          <p class="sub">Crie um convite, mande o link no zap e veja quem vai. Confirmação, Pix e quem leva o quê — tudo num lugar só.</p>
+          <div class="hero-ctas">
+            <button class="btn-primary">Criar meu convite</button>
+            <button class="btn-ghost">Ver um exemplo</button>
+          </div>
+          <div class="hero-microcopy">Grátis. Sem cadastro pro convidado.</div>
+        </div>
+
+        <div class="phone-stack">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-cover">
+                <h2>churras<br>dos amigos</h2>
+                <div class="meta">Sáb, 27/07 · 19h · laje da Bia</div>
+              </div>
+              <div class="phone-body">
+                <div class="title">Você vai colar?</div>
+                <div class="phone-rsvp">
+                  <div class="b b1"><span class="phone-emoji">🥩</span>Eu colo</div>
+                  <div class="b b2"><span class="phone-emoji">👀</span>Talvez</div>
+                  <div class="b b3"><span class="phone-emoji">🧊</span>Não colo</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 2 — CATEGORIAS + TEMPLATES (escolha de capa)
+       ============================================================ -->
+  <section class="kit-section" data-screen-label="02 Escolha de capa">
+    <div class="container">
+      <div class="kit-label">02 — Escolha de capa / template</div>
+
+      <h2 style="font-family:var(--font-display);font-size:56px;line-height:0.95;letter-spacing:-0.025em;margin:0 0 12px;">Escolhe a vibe.</h2>
+      <p style="font-size:17px;color:var(--rz-prata-700);max-width:540px;margin:0 0 32px;">A capa muda o tom do rolê. Começa por aqui — dá pra trocar a qualquer hora.</p>
+
+      <div class="cats" style="margin-bottom: 36px;">
+        <div class="cat-chip sel">🥩 Churrasco</div>
+        <div class="cat-chip">🎂 Aniversário</div>
+        <div class="cat-chip">🔥 Resenha</div>
+        <div class="cat-chip">🏠 Casa aberta</div>
+        <div class="cat-chip">🎮 Jogos</div>
+        <div class="cat-chip">🪩 Karaokê</div>
+        <div class="cat-chip">🍝 Jantar</div>
+        <div class="cat-chip">🏖️ Praia</div>
+        <div class="cat-chip">🌇 Laje</div>
+      </div>
+
+      <div class="tpl-grid">
+        <div class="tpl-with-label">
+          <div class="tpl tpl-1"><h3>churras<br>dos amigos</h3><div class="date">Sáb, 27/07 · 19h</div></div>
+          <div class="lab">Holo</div>
+        </div>
+        <div class="tpl-with-label">
+          <div class="tpl tpl-3"><h3>aniversário<br>da Mari</h3><div class="date">Dom, 04/08 · 17h</div></div>
+          <div class="lab">Brasa</div>
+        </div>
+        <div class="tpl-with-label">
+          <div class="tpl tpl-2"><h3>game<br>night</h3><div class="date">Sex, 02/08 · 20h</div></div>
+          <div class="lab">Noite</div>
+        </div>
+        <div class="tpl-with-label">
+          <div class="tpl tpl-4"><h3>resenha<br>na laje</h3><div class="date">Sáb, 17/08 · 21h</div></div>
+          <div class="lab">Papel</div>
+        </div>
+        <div class="tpl-with-label">
+          <div class="tpl tpl-7"><h3>casa da<br>Bia</h3><div class="date">Sex, 23/08 · 20h</div></div>
+          <div class="lab">Holo soft</div>
+        </div>
+        <div class="tpl-with-label">
+          <div class="tpl tpl-6"><h3>karaokê<br>da firma</h3><div class="date">Qui, 29/08 · 21h</div></div>
+          <div class="lab">Lima</div>
+        </div>
+        <div class="tpl-with-label">
+          <div class="tpl tpl-5"><h3>churras<br>de inverno</h3><div class="date">Sáb, 07/09 · 13h</div></div>
+          <div class="lab">Brasa noite</div>
+        </div>
+        <div class="tpl-with-label">
+          <div class="tpl tpl-8"><h3>noite<br>boteco</h3><div class="date">Sex, 13/09 · 22h</div></div>
+          <div class="lab">Laje</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3 — EDITOR
+       ============================================================ -->
+  <section class="kit-section" data-screen-label="03 Editor do convite">
+    <div class="container">
+      <div class="kit-label">03 — Editor do convite</div>
+
+      <div class="editor">
+        <div class="editor-panel">
+          <div class="editor-tab-row">
+            <div class="editor-tab sel">Informações</div>
+            <div class="editor-tab">Capa</div>
+            <div class="editor-tab">Organização</div>
+          </div>
+
+          <div class="editor-field">
+            <label>Nome do rolê</label>
+            <input value="Churras dos amigos">
+          </div>
+          <div class="editor-field">
+            <label>Data e hora</label>
+            <input value="Sáb, 27/07 · 19h30">
+          </div>
+          <div class="editor-field">
+            <label>Local</label>
+            <input value="Laje da Bia · R. Augusta, 1200">
+          </div>
+          <div class="editor-field">
+            <label>Descrição</label>
+            <textarea rows="2" placeholder="Algo pra deixar o povo no clima…">Carvão, gelo, som ligado. Cada um traz um troço.</textarea>
+          </div>
+
+          <div class="editor-section-title">Confirmação de presença
+            <span style="font-family:var(--font-mono);font-size:10px;color:var(--rz-prata-700);text-transform:uppercase;letter-spacing:0.08em;">pack: churras</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;">
+            <div style="padding:10px 4px;border-radius:12px;background:var(--rz-lima-500);text-align:center;font-size:12px;font-weight:600;">🥩 Eu colo</div>
+            <div style="padding:10px 4px;border-radius:12px;background:var(--rz-creme-25);text-align:center;font-size:12px;font-weight:600;border:1px solid var(--rz-prata-200);">👀 Talvez</div>
+            <div style="padding:10px 4px;border-radius:12px;background:var(--rz-creme-25);text-align:center;font-size:12px;font-weight:600;color:var(--rz-prata-700);border:1px solid var(--rz-prata-200);">🧊 Não colo</div>
+          </div>
+
+          <div class="editor-section-title">Adicionar ao convite</div>
+          <div class="editor-add-chips">
+            <div class="c" style="border-style:solid;color:var(--rz-laje-950);background:var(--rz-creme-25)">✓ Pix</div>
+            <div class="c" style="border-style:solid;color:var(--rz-laje-950);background:var(--rz-creme-25)">✓ Quem leva o quê</div>
+            <div class="c">+ Playlist</div>
+            <div class="c">+ Dress code</div>
+            <div class="c">+ Fotos da resenha</div>
+            <div class="c">+ Regras da casa</div>
+          </div>
+
+          <div class="editor-actions">
+            <button class="btn-secondary">Pré-visualizar</button>
+            <button class="btn-primary">Publicar convite</button>
+          </div>
+        </div>
+
+        <div class="editor-preview">
+          <div class="preview-phone">
+            <div class="cover">
+              <h2>churras<br>dos amigos</h2>
+              <div class="meta">Sáb, 27/07 · 19h30</div>
+            </div>
+            <div class="info">
+              <div class="lbl">Onde</div>
+              <div class="val">Laje da Bia · R. Augusta, 1200</div>
+              <div class="lbl">Contribuição</div>
+              <div class="val">R$ 50 · Pix copiável</div>
+            </div>
+            <div style="font-family:var(--font-display);font-size:32px;letter-spacing:-0.02em;margin-top:24px;line-height:1;">Você vai colar?</div>
+            <div class="rsvp">
+              <div class="b b1">🥩 Eu colo</div>
+              <div class="b b2">👀 Talvez</div>
+              <div class="b b3">🧊 Não colo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4 — PÁGINA PÚBLICA DO EVENTO (desktop view)
+       ============================================================ -->
+  <section class="kit-section" data-screen-label="04 Página pública do evento">
+    <div class="container">
+      <div class="kit-label">04 — Página pública do evento</div>
+
+      <div class="pub">
+        <div class="pub-grid">
+          <div class="pub-cover">
+            <h1>churras<br>dos amigos</h1>
+            <div class="meta">Sáb, 27/07 · 19h30 · laje da Bia</div>
+          </div>
+          <div class="pub-info">
+            <h2>Churras dos amigos</h2>
+            <div class="by">Organiza Léo · 14 confirmados, 3 talvez</div>
+            <div class="pub-row">
+              <div class="pub-cell"><div class="lbl">Quando</div><div class="val">Sáb, 27/07 · 19h30</div></div>
+              <div class="pub-cell"><div class="lbl">Onde</div><div class="val">Laje da Bia</div></div>
+              <div class="pub-cell"><div class="lbl">Contribuição</div><div class="val">R$ 50 · Pix</div></div>
+              <div class="pub-cell"><div class="lbl">Dress code</div><div class="val">Conforto</div></div>
+            </div>
+
+            <div class="pub-question">Você vai colar?</div>
+            <div class="pub-rsvp">
+              <div class="b b1"><span class="emoji">🥩</span>Eu colo</div>
+              <div class="b b2"><span class="emoji">👀</span>Talvez</div>
+              <div class="b b3"><span class="emoji">🧊</span>Não colo</div>
+            </div>
+
+            <div class="pub-list">
+              <div class="avatars">
+                <div class="a" style="background:var(--rz-lima-500)"></div>
+                <div class="a" style="background:var(--rz-brasa-500)"></div>
+                <div class="a" style="background:var(--rz-holo-lilac)"></div>
+                <div class="a" style="background:var(--rz-holo-cyan)"></div>
+                <div class="a" style="background:var(--rz-prata-300)"></div>
+              </div>
+              <span>Léo, Mari, Tito, Bia e mais 10 já confirmaram</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5 — DASHBOARD DO HOST
+       ============================================================ -->
+  <section class="kit-section" data-screen-label="05 Dashboard do host">
+    <div class="container">
+      <div class="kit-label">05 — Dashboard do host</div>
+
+      <div class="dash">
+        <aside class="dash-side">
+          <div class="item sel"><span class="ico"></span>Resumo</div>
+          <div class="item"><span class="ico"></span>Convidados</div>
+          <div class="item"><span class="ico"></span>Pix</div>
+          <div class="item"><span class="ico"></span>Quem leva o quê</div>
+          <div class="item"><span class="ico"></span>Fotos</div>
+          <div class="item"><span class="ico"></span>Configurações</div>
+        </aside>
+
+        <div class="dash-main">
+          <div class="dash-header">
+            <div>
+              <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--rz-prata-700);">Sáb, 27/07 · 19h</div>
+              <h2>Churras dos amigos</h2>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-secondary">Copiar link</button>
+              <button class="btn-primary">Compartilhar no zap</button>
+            </div>
+          </div>
+
+          <div class="dash-stats">
+            <div class="stat lima"><div class="lbl">Confirmados</div><div class="num">14</div><div class="sub">de 22 convidados</div></div>
+            <div class="stat"><div class="lbl">Talvez</div><div class="num">3</div><div class="sub">ainda em cima do muro</div></div>
+            <div class="stat brasa"><div class="lbl">Pix pendente</div><div class="num">6</div><div class="sub">de R$ 700 esperados</div></div>
+            <div class="stat"><div class="lbl">Itens da lista</div><div class="num">5/8</div><div class="sub">3 ainda sem dono</div></div>
+          </div>
+
+          <div class="dash-tables">
+            <div class="dash-card">
+              <h3>Convidados <a href="#">ver todos →</a></h3>
+              <div class="guest"><div class="av" style="background:var(--rz-lima-500)">L</div><div class="name">Léo Andrade</div><span class="stat-pill sp-conf">✓ vai</span><span class="stat-pill sp-paid">pago</span></div>
+              <div class="guest"><div class="av" style="background:var(--rz-brasa-500)">M</div><div class="name">Mari Tavares</div><span class="stat-pill sp-conf">✓ vai</span><span class="stat-pill sp-pix-pending">pix pendente</span></div>
+              <div class="guest"><div class="av" style="background:var(--rz-holo-lilac)">T</div><div class="name">Tito Ramos</div><span class="stat-pill sp-maybe">talvez</span></div>
+              <div class="guest"><div class="av" style="background:var(--rz-holo-cyan)">B</div><div class="name">Bia Cordeiro</div><span class="stat-pill sp-conf">✓ vai</span><span class="stat-pill sp-paid">pago</span></div>
+              <div class="guest"><div class="av" style="background:var(--rz-prata-300)">R</div><div class="name">Rafa Lins</div><span class="stat-pill sp-no">não vai</span></div>
+            </div>
+            <div class="dash-card">
+              <h3>Ações rápidas</h3>
+              <div class="qa-grid">
+                <div class="qa">🔗 Copiar link</div>
+                <div class="qa">📲 Mandar no zap</div>
+                <div class="qa">📋 Editar checklist</div>
+                <div class="qa">❓ Adicionar pergunta</div>
+                <div class="qa">📷 Ativar fotos</div>
+                <div class="qa">👁️ Ocultar lista</div>
+              </div>
+
+              <h3 style="margin-top:24px;">Fotos da resenha <a href="#">abrir álbum →</a></h3>
+              <div class="album-grid">
+                <div class="photo p1"></div>
+                <div class="photo p2"></div>
+                <div class="photo p3"></div>
+                <div class="photo p4"></div>
+                <div class="photo p5"></div>
+                <div class="photo p6"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="ftr">
+    <div class="ftr-grid">
+      <div>
+        <div class="ftr-logo">Rezenhaí</div>
+        <p class="ftr-tag">Chama, envia, acontece. O convite nasce aqui, circula no zap e organiza tudo fora da bagunça.</p>
+      </div>
+      <div>
+        <h4>Produto</h4>
+        <a href="#">Como funciona</a>
+        <a href="#">Recursos</a>
+        <a href="#">Exemplos</a>
+      </div>
+      <div>
+        <h4>Categorias</h4>
+        <a href="#">Churrascos</a>
+        <a href="#">Aniversários</a>
+        <a href="#">Casa aberta</a>
+      </div>
+      <div>
+        <h4>Sobre</h4>
+        <a href="#">Termos</a>
+        <a href="#">Privacidade</a>
+        <a href="#">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

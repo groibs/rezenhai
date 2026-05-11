@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 0; background: var(--rz-creme-50); font-family: var(--font-sans); }
+  .stage { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; height: 220px; }
+  .card { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .card.holo { background: var(--rz-holo); }
+  .card.holo-vib { background: var(--rz-holo-vibrant); }
+  .card.holo-soft { background: var(--rz-holo-soft); }
+  .title { font-family: var(--font-display); font-size: 28px; line-height: 0.95; color: var(--rz-laje-950); letter-spacing: -0.02em; }
+  .label { font-family: var(--font-mono); font-size: 10px; color: var(--rz-laje-950); opacity: 0.7; }
+</style></head>
+<body>
+  <div class="stage">
+    <div class="card holo-soft"><div class="label">--rz-holo-soft</div><div class="title">resenha<br>na laje</div></div>
+    <div class="card holo"><div class="label">--rz-holo (padrão)</div><div class="title">chama,<br>envia.</div></div>
+    <div class="card holo-vib"><div class="label">--rz-holo-vibrant</div><div class="title">noite<br>do karaokê</div></div>
+  </div>
+</body></html>

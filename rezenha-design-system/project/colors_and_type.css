@@ -1,0 +1,295 @@
+/* ==========================================================================
+   Rezenhaí — Colors & Type
+   "Chama, envia, acontece."
+   ========================================================================== */
+
+/* ----- Webfonts (Google Fonts) ----------------------------------------- */
+/* Substitutions flagged in README: no custom brand font supplied yet.    */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Caprasimo&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* ========== BRAND COLORS ==========
+     Six pillars: Laje · Creme · Prata · Brasa · Lima · Holo.
+     Holo is a MATERIAL (iridescent gradient), not a flat color.
+     Rule of one: per screen, one hero accent (Brasa OR Holo) + neutrals.   */
+
+  /* Laje — pure black, the contrast anchor */
+  --rz-laje-950:        #0A0A0A;  /* primary text + dark surfaces */
+  --rz-laje-900:        #141414;
+  --rz-laje-800:        #1F1F1F;
+  --rz-laje-700:        #2E2E2E;
+  --rz-laje-600:        #4A4A4A;
+
+  /* Prata — warm-cool neutral gray, the "off-day" tone */
+  --rz-prata-700:       #555452;
+  --rz-prata-500:       #B5B3B2;  /* the silver from the swatch */
+  --rz-prata-300:       #D4D2D0;
+  --rz-prata-200:       #E0DEDB;
+  --rz-prata-100:       #ECEAE6;
+
+  /* Creme — paper background, NOT pure white */
+  --rz-creme-50:        #EFEAE0;  /* the cream from the swatch — primary bg */
+  --rz-creme-25:        #F5F1E8;  /* whisper-light */
+  --rz-papel:           #FAF7F0;  /* literal paper — cards */
+
+  /* Brasa — primary action, fire-orange */
+  --rz-brasa-100:       #FFE0CF;
+  --rz-brasa-300:       #FFAA82;
+  --rz-brasa-500:       #F4571A;  /* PRIMARY — the orange from the swatch */
+  --rz-brasa-600:       #D9430A;
+  --rz-brasa-700:       #A93305;
+
+  /* Lima — confirmed, positivo, success */
+  --rz-lima-100:        #F1FBC0;
+  --rz-lima-300:        #DEF577;
+  --rz-lima-500:        #CCEC2A;  /* the lime from the swatch */
+  --rz-lima-700:        #8AAF10;
+
+  /* Holo — iridescent material. Use as background, not as color.
+     Always pair with Laje 950 text.                                       */
+  --rz-holo-pink:       #FFB6E1;
+  --rz-holo-lilac:      #C7B8FF;
+  --rz-holo-cyan:       #A6E8FF;
+  --rz-holo-mint:       #C9F2D6;
+  --rz-holo-peach:      #FFD1B8;
+
+  --rz-holo: linear-gradient(
+    115deg,
+    #FFB6E1 0%,
+    #C7B8FF 22%,
+    #A6E8FF 42%,
+    #C9F2D6 58%,
+    #FFE3B0 78%,
+    #FFB6E1 100%
+  );
+  --rz-holo-soft: linear-gradient(
+    115deg,
+    #FFD9EE 0%,
+    #DCD2FF 25%,
+    #C9EEFF 50%,
+    #DCF6DF 75%,
+    #FFE9CB 100%
+  );
+  /* For when you need it more punchy — use sparingly */
+  --rz-holo-vibrant: linear-gradient(
+    115deg,
+    #FF7FC5 0%,
+    #9A82FF 30%,
+    #5ED4FF 55%,
+    #B8EFC7 80%,
+    #FFB180 100%
+  );
+
+  /* Functional red (NOT brand) — for destructive/erro only */
+  --rz-erro-500:        #D7263D;
+
+  /* ========== SEMANTIC TOKENS ========== */
+
+  /* Surfaces & text — light mode (default) */
+  --color-bg:               var(--rz-creme-50);
+  --color-bg-elevated:      var(--rz-papel);
+  --color-surface:          var(--rz-papel);
+  --color-surface-muted:    var(--rz-creme-25);
+  --color-surface-inset:    var(--rz-prata-100);
+
+  --color-text-primary:     var(--rz-laje-950);
+  --color-text-secondary:   var(--rz-prata-700);
+  --color-text-tertiary:    var(--rz-prata-500);
+  --color-text-on-dark:     var(--rz-creme-50);
+  --color-text-on-brand:    var(--rz-creme-50);  /* white-ish on brasa */
+  --color-text-on-lima:     var(--rz-laje-950);
+  --color-text-on-holo:     var(--rz-laje-950);
+  --color-text-link:        var(--rz-brasa-600);
+
+  --color-border:           var(--rz-prata-200);
+  --color-border-strong:    var(--rz-prata-300);
+  --color-border-focus:     var(--rz-laje-950);
+
+  /* Brand */
+  --color-brand-primary:        var(--rz-brasa-500);
+  --color-brand-primary-hover:  var(--rz-brasa-600);
+  --color-brand-primary-active: var(--rz-brasa-700);
+  --color-brand-accent:         var(--rz-holo);          /* the iridescent */
+  --color-brand-accent-flat:    var(--rz-holo-lilac);    /* fallback if no gradient */
+
+  /* States */
+  --color-success:          var(--rz-lima-500);
+  --color-success-on:       var(--rz-laje-950);
+  --color-warning:          var(--rz-brasa-300);   /* peach-warning, derived */
+  --color-warning-on:       var(--rz-laje-950);
+  --color-danger:           var(--rz-erro-500);
+  --color-danger-on:        var(--rz-creme-50);
+  --color-info:             var(--rz-prata-500);
+  --color-info-on:          var(--rz-laje-950);
+
+  /* RSVP / event-specific statuses */
+  --color-confirmed:        var(--rz-lima-500);     /* "Eu colo" */
+  --color-maybe:            var(--rz-prata-300);    /* "Talvez" — neutral, não amarelo */
+  --color-declined:         var(--rz-laje-700);     /* "Não colo" */
+  --color-pending:          var(--rz-prata-300);
+  --color-paid:             var(--rz-lima-500);
+  --color-pix-pending:      var(--rz-brasa-300);
+  --color-item-taken:       var(--rz-prata-300);    /* item já escolhido */
+  --color-item-available:   var(--rz-brasa-500);    /* item disponível */
+
+  /* ========== TYPE SCALE ========== */
+  --font-display: 'Caprasimo', 'Recoleta', Georgia, serif;
+  --font-sans:    'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  /* Desktop scale */
+  --fs-display-xl: 88px;   --lh-display-xl: 0.95;
+  --fs-display-lg: 64px;   --lh-display-lg: 0.98;
+  --fs-display-md: 48px;   --lh-display-md: 1.02;
+  --fs-h1:         40px;   --lh-h1: 1.08;
+  --fs-h2:         32px;   --lh-h2: 1.14;
+  --fs-h3:         24px;   --lh-h3: 1.2;
+  --fs-h4:         20px;   --lh-h4: 1.3;
+  --fs-body-lg:    18px;   --lh-body-lg: 1.5;
+  --fs-body:       16px;   --lh-body: 1.5;
+  --fs-body-sm:    14px;   --lh-body-sm: 1.5;
+  --fs-caption:    12px;   --lh-caption: 1.4;
+  --fs-overline:   11px;   --lh-overline: 1.2;
+
+  /* Letter spacing */
+  --ls-display: -0.02em;
+  --ls-tight:   -0.01em;
+  --ls-normal:   0;
+  --ls-overline: 0.08em;
+
+  /* Weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* ========== SPACING (4px base) ========== */
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* ========== RADIUS ========== */
+  --radius-xs:   4px;   /* tags, micro chips */
+  --radius-sm:   8px;   /* inputs */
+  --radius-md:  12px;   /* small cards, buttons */
+  --radius-lg:  16px;
+  --radius-xl:  20px;   /* cards */
+  --radius-2xl: 28px;   /* hero cards / template cards */
+  --radius-3xl: 36px;   /* big invite covers */
+  --radius-full: 999px; /* pills */
+
+  /* ========== SHADOWS (warm-tinted) ========== */
+  --shadow-soft:   0 4px 16px -4px rgba(27, 23, 20, 0.08), 0 2px 4px -2px rgba(27, 23, 20, 0.06);
+  --shadow-card:   0 8px 24px -8px rgba(27, 23, 20, 0.12), 0 2px 6px -2px rgba(27, 23, 20, 0.06);
+  --shadow-pop:    0 16px 40px -12px rgba(27, 23, 20, 0.22), 0 4px 12px -4px rgba(27, 23, 20, 0.10);
+  --shadow-cover:  0 24px 60px -16px rgba(27, 23, 20, 0.35);
+  --shadow-inset:  inset 0 1px 0 rgba(255, 250, 240, 0.6);
+  --shadow-glow-brasa: 0 0 0 6px rgba(255, 91, 46, 0.18);
+  --shadow-glow-lima:  0 0 0 6px rgba(201, 242, 63, 0.32);
+
+  /* ========== TRANSITIONS ========== */
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-out-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 120ms;
+  --t-base: 200ms;
+  --t-slow: 360ms;
+
+  /* ========== Z-INDEX ========== */
+  --z-base: 1;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-overlay: 50;
+  --z-modal: 100;
+  --z-toast: 200;
+}
+
+/* Dark mode opt-in (used for the "noite" theme — karaokê, jogos, etc) */
+[data-theme="noite"] {
+  --color-bg:              var(--rz-laje-950);
+  --color-bg-elevated:     var(--rz-laje-900);
+  --color-surface:         var(--rz-laje-900);
+  --color-surface-muted:   var(--rz-laje-800);
+  --color-surface-inset:   var(--rz-laje-800);
+  --color-text-primary:    var(--rz-creme-50);
+  --color-text-secondary:  var(--rz-laje-300);
+  --color-text-tertiary:   var(--rz-laje-400);
+  --color-border:          var(--rz-laje-700);
+  --color-border-strong:   var(--rz-laje-600);
+}
+
+/* ========== BASE ========== */
+html, body {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: var(--fw-regular);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ========== SEMANTIC ELEMENT STYLES ========== */
+.rz-display-xl, h1.rz-hero {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-xl);
+  line-height: var(--lh-display-xl);
+  letter-spacing: var(--ls-display);
+  font-weight: var(--fw-regular);
+}
+.rz-display-lg {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-lg);
+  line-height: var(--lh-display-lg);
+  letter-spacing: var(--ls-display);
+}
+.rz-display-md {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-md);
+  line-height: var(--lh-display-md);
+  letter-spacing: var(--ls-display);
+}
+.rz-h1 { font-family: var(--font-sans); font-size: var(--fs-h1); line-height: var(--lh-h1); letter-spacing: var(--ls-tight); font-weight: var(--fw-bold); }
+.rz-h2 { font-family: var(--font-sans); font-size: var(--fs-h2); line-height: var(--lh-h2); letter-spacing: var(--ls-tight); font-weight: var(--fw-bold); }
+.rz-h3 { font-family: var(--font-sans); font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: var(--fw-semibold); }
+.rz-h4 { font-family: var(--font-sans); font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: var(--fw-semibold); }
+.rz-body-lg { font-size: var(--fs-body-lg); line-height: var(--lh-body-lg); }
+.rz-body    { font-size: var(--fs-body); line-height: var(--lh-body); }
+.rz-body-sm { font-size: var(--fs-body-sm); line-height: var(--lh-body-sm); }
+.rz-caption { font-size: var(--fs-caption); line-height: var(--lh-caption); color: var(--color-text-secondary); }
+.rz-overline {
+  font-size: var(--fs-overline);
+  line-height: var(--lh-overline);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+.rz-mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.rz-num  { font-feature-settings: "tnum" 1, "ss01" 1; font-variant-numeric: tabular-nums; }
+
+/* Mobile scale — applied via container/media query in product code */
+@media (max-width: 640px) {
+  :root {
+    --fs-display-xl: 56px;
+    --fs-display-lg: 44px;
+    --fs-display-md: 36px;
+    --fs-h1: 32px;
+    --fs-h2: 26px;
+    --fs-h3: 20px;
+    --fs-h4: 18px;
+  }
+}

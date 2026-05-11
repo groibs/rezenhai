@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--rz-creme-50); }
+  .scale { display: grid; grid-template-columns: 90px repeat(5, 1fr); gap: 8px; align-items: center; margin-bottom: 12px; }
+  .label { font-weight: 700; font-size: 13px; letter-spacing: -0.01em; }
+  .chip { height: 56px; border-radius: 12px; display: flex; align-items: flex-end; padding: 8px 10px; box-shadow: var(--shadow-soft); font-family: var(--font-mono); font-size: 10px; }
+  .chip.dark { color: var(--rz-creme-50); }
+  .chip.light { color: var(--rz-laje-950); }
+</style></head>
+<body>
+  <div class="scale">
+    <div class="label">Brasa</div>
+    <div class="chip light" style="background:var(--rz-brasa-100)">100</div>
+    <div class="chip light" style="background:var(--rz-brasa-300)">300</div>
+    <div class="chip dark" style="background:var(--rz-brasa-500)">500</div>
+    <div class="chip dark" style="background:var(--rz-brasa-600)">600</div>
+    <div class="chip dark" style="background:var(--rz-brasa-700)">700</div>
+  </div>
+  <div class="scale">
+    <div class="label">Lima</div>
+    <div class="chip light" style="background:var(--rz-lima-100)">100</div>
+    <div class="chip light" style="background:var(--rz-lima-300)">300</div>
+    <div class="chip light" style="background:var(--rz-lima-500)">500</div>
+    <div class="chip dark" style="background:var(--rz-lima-700)">700</div>
+    <div class="chip dark" style="background:var(--rz-laje-700)">laje 700</div>
+  </div>
+  <div class="scale">
+    <div class="label">Prata / Laje</div>
+    <div class="chip light" style="background:var(--rz-prata-100)">prata 100</div>
+    <div class="chip light" style="background:var(--rz-prata-300)">prata 300</div>
+    <div class="chip light" style="background:var(--rz-prata-500)">prata 500</div>
+    <div class="chip dark" style="background:var(--rz-prata-700)">prata 700</div>
+    <div class="chip dark" style="background:var(--rz-laje-950)">laje 950</div>
+  </div>
+</body></html>

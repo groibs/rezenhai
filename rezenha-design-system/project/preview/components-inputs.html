@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--rz-creme-50); font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .lab { font-size: 13px; font-weight: 600; color: var(--rz-laje-950); }
+  .hint { font-size: 11.5px; color: var(--rz-prata-700); }
+  .err { font-size: 11.5px; color: #D7263D; font-weight: 500; }
+  input, textarea, select { width: 100%; padding: 12px 14px; font-family: var(--font-sans); font-size: 15px; background: var(--rz-papel); border: 1.5px solid var(--rz-prata-200); border-radius: 12px; color: var(--rz-laje-950); outline: none; box-sizing: border-box; transition: border 120ms; }
+  input::placeholder { color: var(--rz-prata-500); }
+  input:focus { border-color: var(--rz-laje-950); }
+  input.err { border-color: #D7263D; }
+  .with-icon { position: relative; }
+  .with-icon input { padding-left: 38px; }
+  .ico { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--rz-prata-500); font-family: var(--font-mono); font-weight: 600; }
+</style></head>
+<body>
+  <div class="grid">
+    <div class="field">
+      <div class="lab">Nome do rolê</div>
+      <input placeholder="Ex: Churras da Bia" value="Churras dos amigos">
+    </div>
+    <div class="field">
+      <div class="lab">Local</div>
+      <div class="with-icon"><span class="ico">@</span><input placeholder="Endereço ou referência"></div>
+    </div>
+    <div class="field">
+      <div class="lab">Data e hora</div>
+      <input value="Sáb, 27/07 · 19h30">
+    </div>
+    <div class="field">
+      <div class="lab">Chave Pix</div>
+      <input class="err" value="resenh@@@">
+      <div class="err">Chave Pix inválida — confira o formato.</div>
+    </div>
+  </div>
+</body></html>
