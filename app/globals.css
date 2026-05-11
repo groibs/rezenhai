@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Caprasimo&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Caprasimo', 'Recoleta', Georgia, serif;
+  --font-sans: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #efeae0;
+  color: #0a0a0a;
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: #f4571a;
+  color: #faf7f0;
+}
+
+.holo-border {
+  position: relative;
+}
+
+.holo-border::before {
+  background: linear-gradient(115deg, #ffb6e1 0%, #c7b8ff 22%, #a6e8ff 42%, #c9f2d6 58%, #ffe3b0 78%, #ffb6e1 100%);
+  border-radius: inherit;
+  content: '';
+  inset: -2px;
+  position: absolute;
+  z-index: -1;
+}
