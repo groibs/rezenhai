@@ -1,0 +1,3 @@
+import { AppShell, Card, LinkButton, SectionTitle, TopBar } from '@/components/ui';
+import { exampleCards } from '@/lib/demo-data';
+export default function ExemplosPage() { return <AppShell><TopBar /><section className="mx-auto max-w-7xl px-5 py-16 md:px-8"><SectionTitle eyebrow="Exemplos" title="Escolha um modelo e comece">Templates para churrasco, aniversário, resenha, casa aberta, jogos e karaokê.</SectionTitle><div className="mt-12 grid gap-4 md:grid-cols-3">{exampleCards.map((card) => <Card key={card.title}><p className="font-bold text-brasa-600">{card.tag}</p><h2 className="mt-3 text-3xl font-black">{card.title}</h2><LinkButton href="/criar/capa" className="mt-5">Usar modelo</LinkButton></Card>)}</div></section></AppShell>; }
